@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
+
+:root {
+    --primary: #323232;
+    --secondary: #8257e5;
+    --secondary-light: #9a77eb;
+    --secondary-dark: #673dc7;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    font-family: 'Orbitron';
+    text-decoration: none;
+}
+
+body {
+    background-color: white;
+}
+
+.form {
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25);
+    background-color: var(--primary);
+    color: white;
+}
+
+.form-label {
+    cursor: text;
+    pointer-events: none;
+}
+
+.form-input {
+    border: none;
+    box-shadow: inset 2px 2px 3px rgba(0, 0, 0, 0.25);
+    background-color: var(--secondary);
+}
+
+.form-input:focus {
+    outline: none;
+    background-color: var(--secondary-light);
+}
+
+.label-input-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.lr-button {
+    border-radius: 0 0 10px 10px;
+    border: none;
+    background-color: var(--secondary);
+    color: white;
+    cursor: pointer;
+}
+
+.lr-button:active {
+    background-color: var(--secondary-dark);
+}
