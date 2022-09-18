@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
+
+:root {
+    --primary: #252525;
+    --secondary: #8257e5;
+    --secondary-light: #9a77eb;
+    --secondary-dark: #673dc7;
+    --light-grey: #606060;
+    --red: #fb1414;
+    --green: #569320;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Orbitron';
+    text-decoration: none;
+}
+
+body {
+    background-color: white;
+}
+
+header {
+    display: flex;
+}
+
+.form {
+    border-radius: 15px;
+    box-shadow: 7.5px 6.5px 1px rgba(120, 120, 120, 0.75);
+    background-color: var(--primary);
+    color: white;
+}
+
+.form-message {
+    width: 100%;
+    background-color: var(--secondary-light);
+    border: 3px solid var(--secondary);
+    opacity: 0.75;
+    padding: 5px;
+    font-size: 0.75rem;
+    letter-spacing: 0.15rem;
+    color:var(--red);
+}
+
+.form-label {
+    cursor: text;
+    pointer-events: none;
+}
+
+.form-input {
+    border: none;
+    border-left: 10px solid var(--secondary);
+    box-shadow: inset 2px 2px 3px rgba(0, 0, 0, 0.25);
+    background-color: var(--light-grey);
+}
+
+.form-input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 30px var(--light-grey) inset !important;
+    -webkit-text-fill-color: white;
+}
+
+.form-input:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0 30px var(--secondary-light) inset !important;
+    -webkit-text-fill-color: white;
+}
+
+.form-input:focus {
+    outline: none;
+    background-color: var(--secondary-light);
+}
+
+.label-input-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.lr-button {
+    border-radius: 0 0 15px 15px;
+    border: none;
+    background-color: var(--secondary);
+    color: white;
+    cursor: pointer;
+}
+
+.lr-button:active {
+    background-color: var(--secondary-dark);
+}
+
+.lr-button:disabled {
+    background-color: var(--primary);
+    border-top: 1px solid var(--light-grey);
+    cursor: no-drop;
+}
