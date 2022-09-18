@@ -12,13 +12,16 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    list-style: none;
     font-family: 'Orbitron';
     text-decoration: none;
 }
 
 body {
     background-color: white;
+}
+
+header {
+    display: flex;
 }
 
 .form {
@@ -81,4 +84,10 @@ body {
 
 .lr-button:active {
     background-color: var(--secondary-dark);
+}
+
+.lr-button:disabled {
+    background-color: var(--primary);
+    border-top: 1px solid var(--light-grey);
+    cursor: no-drop;
 }

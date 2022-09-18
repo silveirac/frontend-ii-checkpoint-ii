@@ -1,26 +1,37 @@
-const loginInput = document.getElementById("username-input");
-loginInput.label = "username-label";
-loginInput.addEventListener("focus", labelMoveFocus, false);
-loginInput.addEventListener("blur", labelMoveBlur, false);
-
+// CAPTURA DE ELEMENTOS
+const nameInput = document.getElementById("name-input");
+const lastNameInput = document.getElementById("lastname-input");
+const emailInput = document.getElementById("email-input");
 const passwordInput = document.getElementById("password-input");
-passwordInput.label = "password-label";
-passwordInput.addEventListener("focus", labelMoveFocus, false);
-passwordInput.addEventListener("blur", labelMoveBlur, false);
 
+// ARRAY PARA ITERAÇÃO
+let inputIterationArray = [
+    nameInput,
+    lastNameInput,
+    emailInput,
+    passwordInput
+];
+
+// ITERAÇÃO DE .addEventListener
+inputIterationArray.forEach(element => {
+    if (element) {
+        element.addEventListener("focus", labelMoveFocus, false);
+        element.addEventListener("blur", labelMoveBlur, false);
+    }
+});
+
+// FUNÇÕES
 function labelMoveFocus (event) {
-    let input = event.target;
-    let label = document.getElementById(input.label);
+    let label = document.getElementById(`${event.target.name}-label`);
 
     label.style.top = "-18px"
     label.style.fontSize = "0.5rem"
 }
 
 function labelMoveBlur (event) {
-    let input = event.target;
-    let label = document.getElementById(input.label);
+    let label = document.getElementById(`${event.target.name}-label`);
 
-    if (input.value == "") {
+    if (event.target.value == "") {
         label.style.top = "15px"
         label.style.fontSize = "0.75rem"
     }

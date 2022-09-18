@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Space ToDo | Login</title>
+    <title>Space ToDo | Cadastro</title>
     <link rel="stylesheet" href="./css/access.css">
     <script src="./js/script.js" defer></script>
 </head>
@@ -15,9 +15,17 @@
         </a>
         <div class="form-container">
             <form action="#" class="form" id="login-form">
-                <h2 id="form-title">.LOGIN_</h2>
+                <h2 id="form-title">.CADASTRO_</h2>
                 <fieldset>
                     <div class="form-message" hidden></div>
+                    <span class="label-input-container">
+                        <label for="name" id="name-label" class="form-label">NOME</label>
+                        <input type="name" id="name-input" class="form-input" name="name">
+                    </span>
+                    <span class="label-input-container">
+                        <label for="lastname" id="lastname-label" class="form-label">SOBRENOME</label>
+                        <input type="lastname" id="lastname-input" class="form-input" name="lastname">
+                    </span>
                     <span class="label-input-container">
                         <label for="email" id="email-label" class="form-label">EMAIL</label>
                         <input type="email" id="email-input" class="form-input" name="email">
@@ -28,9 +36,9 @@
                     </span>
                 </fieldset>
                 <!-- Botão por padrão é disabled e alterado por JS -->
-                <button type="submit" id="l-button" class="lr-button" disabled>ENTRAR</button>
+                <button type="submit" id="r-button" class="lr-button" disabled>ENVIAR</button>
             </form>
-            <span>Ainda não tem uma conta?&nbsp&nbsp<a href="./register.html"> Cadastre-se!</a></span>
+            <span>Já possui uma conta?&nbsp&nbsp<a href="./login.html">Acesse!</a></span>
         </div>
     </main>
 </body>
