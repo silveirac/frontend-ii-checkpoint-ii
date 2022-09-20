@@ -3,13 +3,23 @@ const nameInput = document.getElementById("name-input");
 const lastNameInput = document.getElementById("lastname-input");
 const emailInput = document.getElementById("email-input");
 const passwordInput = document.getElementById("password-input");
+const password2Input = document.getElementById("password2-input");
+
+window.addEventListener("load",testeJWT)
+function testeJWT(){
+    let jwt = sessionStorage.getItem("jwt");
+    if(jwt != null){
+        window.location.href='tarefas.html';
+    }
+};
 
 // ARRAY PARA ITERAÇÃO
 let inputIterationArray = [
     nameInput,
     lastNameInput,
     emailInput,
-    passwordInput
+    passwordInput,
+    password2Input
 ];
 
 // ITERAÇÃO DE .addEventListener

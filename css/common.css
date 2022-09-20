@@ -6,6 +6,8 @@
     --secondary-light: #9a77eb;
     --secondary-dark: #673dc7;
     --light-grey: #606060;
+    --red: #e23333;
+    --green: #569320;
 }
 
 * {
@@ -39,6 +41,7 @@ header {
     padding: 5px;
     font-size: 0.75rem;
     letter-spacing: 0.15rem;
+    color:var(--red);
 }
 
 .form-label {
@@ -90,4 +93,5 @@ header {
     background-color: var(--primary);
     border-top: 1px solid var(--light-grey);
     cursor: no-drop;
+    color: var(--light-grey);
 }

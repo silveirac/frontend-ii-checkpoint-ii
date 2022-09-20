@@ -1,0 +1,82 @@
+@import url('./common.css');
+
+body {
+    height: 100vh;
+    /* background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.85)), url("../assets/login-background.webp");
+    background-size: cover;
+    background-repeat: no-repeat; */
+    background-color: var(--primary);
+    overflow: hidden;
+}
+
+header {
+    height: 55px;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid rgba(130, 87, 229, 1);
+    padding-left: 20px;
+    background-color: rgba(0, 0, 0, 1);
+}
+
+.header-menu {
+    display: none;
+    color: white;
+    font-size: 0.75rem;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 25px;
+}
+
+.logo-img {
+    height: 35px;
+}
+
+@media (min-width: 768px) {
+    header {
+        justify-content: space-between;
+    }
+
+    .header-menu {
+        display: flex;
+        height: 100%;
+    }
+
+    .header-menu ul{
+        display: flex;
+        height: 100%;
+    }
+    
+    .header-menu ul li {
+        display: flex;
+        justify-content: center;
+        width: 140px;
+        height: 100%;
+        padding: 0 10px;
+    }
+
+    .header-menu ul li a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        height: 100%;
+        width: 100%;
+    }
+
+    #header-menu-register {
+        border-left: 1px solid rgba(96, 96, 96, 0.5);
+        background-color: var(--secondary);
+    }
+
+    #header-menu-register:hover {
+        background-color: var(--secondary-light);
+    }
+
+    #header-menu-register:active {
+        background-color: var(--secondary-dark);
+    }
+}

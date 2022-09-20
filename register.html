@@ -7,6 +7,7 @@
     <title>Space ToDo | Cadastro</title>
     <link rel="stylesheet" href="./css/access.css">
     <script src="./js/script.js" defer></script>
+    <script src="./js/register.js" type="module" defer></script>
 </head>
 <body>
     <main>
@@ -21,18 +22,27 @@
                     <span class="label-input-container">
                         <label for="name" id="name-label" class="form-label">NOME</label>
                         <input type="name" id="name-input" class="form-input" name="name">
+                        <small id="erroNome"></small>
                     </span>
                     <span class="label-input-container">
                         <label for="lastname" id="lastname-label" class="form-label">SOBRENOME</label>
                         <input type="lastname" id="lastname-input" class="form-input" name="lastname">
+                        <small id="erroSobrenome"></small>
                     </span>
                     <span class="label-input-container">
                         <label for="email" id="email-label" class="form-label">EMAIL</label>
                         <input type="email" id="email-input" class="form-input" name="email">
+                        <small id="erroEmail"></small>
                     </span>
                     <span class="label-input-container">
                         <label for="password" id="password-label" class="form-label">SENHA</label>
                         <input type="password" id="password-input" class="form-input" name="password">
+                        <small id="erroSenha1"></small>
+                    </span>
+                    <span class="label-input-container">
+                        <label for="password2" id="password2-label" class="form-label">CONFIRME A SENHA</label>
+                        <input type="password" id="password2-input" class="form-input" name="password2">
+                        <small id="erroSenha2"></small>
                     </span>
                 </fieldset>
                 <!-- Botão por padrão é disabled e alterado por JS -->
