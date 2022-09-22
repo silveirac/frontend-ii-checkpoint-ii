@@ -2,9 +2,6 @@
 
 body {
     height: 100vh;
-    /* background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.85)), url("../assets/login-background.webp");
-    background-size: cover;
-    background-repeat: no-repeat; */
     background-color: var(--primary);
     overflow: hidden;
 }
@@ -25,14 +22,72 @@ header {
 }
 
 main {
+    background-image: url("../assets/task-background.svg");
+    background-size: 400px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 25px;
 }
 
 .logo-img {
     height: 35px;
+}
+
+.workspace {
+    display: flex;
+    height: 100%;
+    width: 100%;
+
+}
+
+.tools-ribbon {
+    background-color: var(--primary-dark);
+    height: 65px;
+    width: 100%;
+    box-shadow: 0px 5px 2px rgba(0, 0, 0, 0.5);
+}
+
+.pending-list {
+    position: relative;
+    background-color: #202020;
+    box-shadow: inset -1px 1px 3px rgba(20, 20, 20, 0.25);
+    border-radius: 15px;
+    min-height: 80vh;
+    margin: 35px 10px 20px 20px;
+    padding: 50px 20px;
+    width: 65%;
+}
+
+.pending-task {
+    color: white;
+}
+
+.done-list {
+    position: relative;
+    width: 35%;
+    background-color: #202020;
+    box-shadow: inset -1px 1px 3px rgba(20, 20, 20, 0.25);
+    border-radius: 15px;
+    min-height: 80vh;
+    margin: 35px 20px 20px 10px;
+    padding: 50px 20px;
+}
+
+.done-task {
+    color: white;
+}
+
+.list-title {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    color: white;
+    background-color: var(--primary-dark);
+    box-shadow: 0px 1px 1px var(--secondary);
+    padding: 15px;
+    border-radius: 15px 15px 0px 0px;
+    letter-spacing: 0.20rem;
 }
 
 @media (min-width: 768px) {
