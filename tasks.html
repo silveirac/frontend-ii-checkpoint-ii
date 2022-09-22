@@ -15,38 +15,60 @@
         </a>
         <nav class="header-menu">
             <ul>
-                <li class="header-menu-list-item">
-                    <a href="./login.html">
-                        <p>LOGIN</p>
-                    </a>
-                </li>
                 <li class="header-menu-list-item" id="header-menu-register">
-                    <a href="https://github.com/silveirac/frontend-ii-checkpoint-ii" target="_blank">
-                        <p>REPOSITÓRIO</p>
+                    <a href="#" id="user-profile-button" onclick="openProfile()">
+                        <img src="./assets/pic-placeholder.svg" alt="Perfil de Usuário">
+                        <div class="profile-bars">
+                            <div class="bar bar1"></div>
+                            <div class="bar bar2"></div>
+                        </div>
                     </a>
                 </li>
             </ul>
         </nav>
     </header>
     <main>
-        <div class="tools-ribbon">
-        
-        </div>
+        <!-- <div class="tools-ribbon">
+
+        </div> -->
         <div class="workspace">
-            <div class="pending-list">
-                <span class="list-title">PENDENTES</span>
-                <div class="pending-task">
+            <div class="pending-list-area">
+                <div class="list-title">
+                    <p>PENDENTES</p>
+                    <ul>
+                        <li><a href="#">+</a></li>
+                        <li><a href="#">-</a></li>
+                    </ul>
+                </div>
+                <div class="pending-list">
+                    <div class="pending-task">
+                    </div>
+                </div>
+            </div>
+            <div class="done-list-area">
+                <div class="list-title">
+                    <p>CONCLUÍDAS</p>
 
                 </div>
-            </div>
-            <div class="done-list">
-                <span class="list-title">CONCLUÍDAS</span>
-                <div class="done-task">
+                <div class="done-list">
+                    <div class="done-task">
+                    </div>
                 </div>
             </div>
         </div>
+    </main>
     <footer>
 
     </footer>
+    <div id="profile-window">
+        <img src="./assets/profile-pic.jpg" alt="imagem de perfil" id="profile-pic">
+        <p id="profile-name">Neymar Jr.</p>
+        <p id="profile-email">MENINONEY@PSG.FR</p>
+        <a href="#" id="profile-password-change">ALTERAR SENHA</a>
+        <a href="./index.html" id="profile-logout">
+            <p>ENCERRAR SESSÃO</p>
+            <img src="./assets/logout.svg" alt="Encerrar Sessão">
+        </a>
+    </div>
 </body>
 </html>

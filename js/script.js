@@ -46,3 +46,31 @@ function labelMoveBlur (event) {
         label.style.fontSize = "0.75rem"
     }
 }
+
+function openProfile () {
+    let arrow = document.querySelector(".profile-bars");
+    let pWindow = document.getElementById("profile-window")
+
+    if (arrow.style.transform == "") {
+        arrow.style.transform = "rotate(180deg)"
+        pWindow.style.visibility = "visible";
+        pWindow.style.transition = "100ms"
+        pWindow.style.height = "300px"
+    } else {
+        arrow.style.transform = ""
+        pWindow.style.visibility = "hidden";
+        pWindow.style.transition = "0ms"
+        pWindow.style.height = "0"
+    }
+}
+
+function togleProfileWindow () {
+    let pWindow = document.createElement("div");
+    pWindow.innerHTML = `
+        <img src="./assets/pic-placeholder.svg" alt="imagem de perfil" id="profile-pic">
+        <p id="profile-name">${CAUÊ} ${SILVEIRA}</p>
+        <p id="profile-email">${'CAUEASILVEIRA@GMAIL.COM'}</p>
+        <a href="#" id="profile-password-change">ALTERAR SENHA</a>
+        <a href="./index.html" class="profile-logout"></a>
+    `;
+}
