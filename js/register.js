@@ -44,7 +44,7 @@ sobrenome.addEventListener("keyup",function(){
     }
 });
 //regex para testar se email possui formato valido, EX: xxx@xxx.com
-let testaEmail = /\S+@\S+\.\S+/;
+let testaEmail = /\S\+@S+\.\S+/;
 
 email.addEventListener("keyup",function(){
     let testeEmail = testaEmail.test(email.value);

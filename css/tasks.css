@@ -37,7 +37,7 @@ header {
     height: 35px;
 }
 
-.profile-bars {
+.arrow-bars {
     display: flex;
     column-gap: 4px;
 }
@@ -47,6 +47,16 @@ header {
     background-color: white;
     width: 2px;
 }
+
+.expand-bars {
+    width: 3px;
+    height: 10px;
+    background-color: var(--light-grey);
+}
+
+/* .expand-bars:hover {
+    background-color: var(--secondary-light);
+} */
 
 .bar1 {
     transform: rotate(-57.5deg);
@@ -152,7 +162,7 @@ main {
     margin: 35px 10px 20px 20px;
 }
 
-.pending-list {
+#pending-list {
     background-color: rgba(32, 32, 32, 0.65);
     box-shadow: inset -1px 1px 3px rgba(20, 20, 20, 0.25);
     border-radius: 0 0 15px 15px;
@@ -161,7 +171,59 @@ main {
 }
 
 .pending-task {
+    position: relative;
+    display: flex;
+    align-items: center;
+    column-gap: 20px;
     color: white;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+    min-height: 60px;
+    padding: 15px;
+}
+
+.pending-task:hover {
+    border-radius: 15px;
+    background-color: var(--primary-dark);
+    border: none;
+}
+
+.pending-task:hover > div {
+    visibility: visible;
+}
+
+.task-move {
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+    visibility: hidden;
+    cursor: pointer;
+}
+
+.move-up {
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid var(--light-grey);
+}
+
+.move-up:hover {
+    border-bottom: 8px solid var(--secondary);
+}
+
+.move-down {
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid var(--light-grey);
+    transform: rotate(180deg);
+}
+
+.move-down:hover {
+    border-bottom: 8px solid var(--secondary);
+}
+
+.task-description {
+    font-family: 'Arial';
+    font-size: 1rem;
+    letter-spacing: 0.15rem;
 }
 
 .done-list-area {
@@ -169,7 +231,7 @@ main {
     margin: 35px 20px 20px 10px;
 }
 
-.done-list {
+#done-list {
     background-color: rgba(32, 32, 32, 0.65);
     box-shadow: inset -1px 1px 3px rgba(20, 20, 20, 0.25);
     border-radius: 0 0 15px 15px;
@@ -208,12 +270,16 @@ main {
 
 .list-title a {
     color: var(--light-grey);
-    font-size: 2.25rem;
+    font-size: 2rem;
 }
 
 .list-title a:hover {
     color: var(--secondary-light);
 }
+
+/* .list-title a:last-child {
+    background-color: var(--secondary-light);
+} */
 
 @media (min-width: 768px) {
     header {

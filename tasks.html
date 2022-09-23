@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Space ToDo | Outerspace Organization</title>
     <link rel="stylesheet" href="./css/tasks.css">
-    <script src="./js/script.js" defer></script>
+    <script src="./js/script.js"></script>
+    <script src="./js/tarefas.js" defer></script>
 </head>
 <body>
     <header id="header-container">
@@ -18,7 +19,7 @@
                 <li class="header-menu-list-item" id="header-menu-register">
                     <a href="#" id="user-profile-button" onclick="openProfile()">
                         <img src="./assets/pic-placeholder.svg" alt="Perfil de Usuário">
-                        <div class="profile-bars">
+                        <div class="arrow-bars">
                             <div class="bar bar1"></div>
                             <div class="bar bar2"></div>
                         </div>
@@ -28,29 +29,44 @@
         </nav>
     </header>
     <main>
-        <!-- <div class="tools-ribbon">
-
-        </div> -->
         <div class="workspace">
             <div class="pending-list-area">
                 <div class="list-title">
                     <p>PENDENTES</p>
                     <ul>
                         <li><a href="#">+</a></li>
-                        <li><a href="#">-</a></li>
+                        <!-- <li>
+                            <a href="#" class="arrow-bars">
+                                <div class="expand-bars bar1"></div>
+                                <div class="expand-bars bar2"></div>
+                            </a>
+                        </li> -->
                     </ul>
                 </div>
-                <div class="pending-list">
-                    <div class="pending-task">
+                <div id="pending-list">
+                    <div class="pending-task" id="1">
+                        <div class="task-move">
+                            <div class="move-up"></div>
+                            <div class="move-down"></div>
+                        </div>
+                        <p class="task-description">Tarefa 1</p>
+                        <div class="task-actions">X</div>
+                    </div>
+                    <div class="pending-task" id="2">
+                        <div class="task-move">
+                            <div class="move-up"></div>
+                            <div class="move-down"></div>
+                        </div>
+                        <p class="task-description">Tarefa 2</p>
+                        <div class="task-actions">X</div>
                     </div>
                 </div>
             </div>
             <div class="done-list-area">
                 <div class="list-title">
                     <p>CONCLUÍDAS</p>
-
                 </div>
-                <div class="done-list">
+                <div id="done-list">
                     <div class="done-task">
                     </div>
                 </div>
@@ -60,7 +76,7 @@
     <footer>
 
     </footer>
-    <div id="profile-window">
+    <!-- <div id="profile-window">
         <img src="./assets/profile-pic.jpg" alt="imagem de perfil" id="profile-pic">
         <p id="profile-name">Neymar Jr.</p>
         <p id="profile-email">MENINONEY@PSG.FR</p>
@@ -69,6 +85,6 @@
             <p>ENCERRAR SESSÃO</p>
             <img src="./assets/logout.svg" alt="Encerrar Sessão">
         </a>
-    </div>
+    </div> -->
 </body>
 </html>

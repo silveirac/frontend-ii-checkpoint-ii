@@ -5,13 +5,21 @@ const emailInput = document.getElementById("email-input");
 const passwordInput = document.getElementById("password-input");
 const password2Input = document.getElementById("password2-input");
 
-window.addEventListener("load",testeJWT)
-function testeJWT(){
+window.addEventListener("load",userValidation);
+function userValidation() {
     let jwt = sessionStorage.getItem("jwt");
-    if(jwt != null){
-        window.location.href='tarefas.html';
-    }
-};
+    fetch ("https://ctd-fe2-todo-v2.herokuapp.com/v1/users/getMe", {
+        method: 'GET',
+        headers: {"Authorization" : jwt}
+    })
+    .then (response => response.json())
+    .then (result => {
+        if (result !== "jwt malformed") {
+            sessionStorage.setItem("user", JSON.stringify(result))
+        }
+    })
+    .catch (erro => console.log(erro))
+}
 
 // ARRAY PARA ITERAÇÃO
 let inputIterationArray = [
@@ -48,29 +56,44 @@ function labelMoveBlur (event) {
 }
 
 function openProfile () {
-    let arrow = document.querySelector(".profile-bars");
+    let arrow = document.querySelector(".arrow-bars");
     let pWindow = document.getElementById("profile-window")
 
-    if (arrow.style.transform == "") {
+    if (pWindow == null) { 
+        togleProfileWindow();
+        pWindow = document.getElementById("profile-window")
         arrow.style.transform = "rotate(180deg)"
         pWindow.style.visibility = "visible";
         pWindow.style.transition = "100ms"
         pWindow.style.height = "300px"
+    
     } else {
+        let body = document.querySelector("body")
+        pWindow = document.getElementById("profile-window")
+
         arrow.style.transform = ""
         pWindow.style.visibility = "hidden";
         pWindow.style.transition = "0ms"
         pWindow.style.height = "0"
+
+        body.removeChild(pWindow);
     }
 }
 
 function togleProfileWindow () {
-    let pWindow = document.createElement("div");
+    let body = document.querySelector("body");
+    let pWindow = document.createElement("div");    
     pWindow.innerHTML = `
-        <img src="./assets/pic-placeholder.svg" alt="imagem de perfil" id="profile-pic">
-        <p id="profile-name">${CAUÊ} ${SILVEIRA}</p>
-        <p id="profile-email">${'CAUEASILVEIRA@GMAIL.COM'}</p>
+        <img src="./assets/profile-pic.jpg" alt="imagem de perfil" id="profile-pic">
+        <p id="profile-name">Neymar Jr.</p>
+        <p id="profile-email">MENINONEY@PSG.FR</p>
         <a href="#" id="profile-password-change">ALTERAR SENHA</a>
-        <a href="./index.html" class="profile-logout"></a>
+        <a href="./index.html" id="profile-logout">
+            <p>ENCERRAR SESSÃO</p>
+            <img src="./assets/logout.svg" alt="Encerrar Sessão">
+        </a>
     `;
+
+    pWindow.id = "profile-window";
+    body.appendChild(pWindow);
 }

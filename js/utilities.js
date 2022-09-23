@@ -3,7 +3,7 @@ let senhaLogin = document.querySelector("#password-input");
 let botaoLogin = document.querySelector("#l-button");
 let erroLogin = document.querySelector(".form-message");
 
-const URL = "https://ctd-todo-api.herokuapp.com/v1";
+const URL = "https://ctd-fe2-todo-v2.herokuapp.com/v1";
 export function bloqueiaBotao(botao){
     botao.disabled= "true";
     botao.style.backgroundColor = "var(--primary)";
@@ -24,7 +24,7 @@ export function login(usuario){
     }
   }).then(function(resposta){
     sessionStorage.setItem("jwt",resposta.jwt);
-    window.location.href='tarefas.html';
+    window.location.href='tasks.html';
   }).catch(erro =>{
     senhaLogin.value = "";
     emailLogin.value = "";
@@ -48,7 +48,7 @@ export function cadastra(usuario){
     return resposta.json();
   }).then(function(resposta){
     sessionStorage.setItem("jwt",resposta.jwt);
-    window.location.href='tarefas.html';
+    window.location.href='tasks.html';
   })
   .catch(erro =>{
     console.log(erro);
