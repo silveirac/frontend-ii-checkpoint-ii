@@ -117,3 +117,7 @@ header {
     cursor: no-drop;
     color: var(--light-grey);
 }
+
+a {
+    cursor: pointer !important;
+}

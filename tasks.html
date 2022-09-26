@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Space ToDo | Outerspace Organization</title>
     <link rel="stylesheet" href="./css/tasks.css">
-    <script src="./js/script.js"></script>
-    <script src="./js/tarefas.js" defer></script>
+    <script src="./js/script.js" defer></script>
+    <script src="./js/tasks.js" defer></script>
 </head>
 <body>
     <header id="header-container">
@@ -19,10 +19,6 @@
                 <li class="header-menu-list-item" id="header-menu-register">
                     <a href="#" id="user-profile-button" onclick="openProfile()">
                         <img src="./assets/pic-placeholder.svg" alt="Perfil de Usuário">
-                        <div class="arrow-bars">
-                            <div class="bar bar1"></div>
-                            <div class="bar bar2"></div>
-                        </div>
                     </a>
                 </li>
             </ul>
@@ -34,9 +30,9 @@
                 <div class="list-title">
                     <p>PENDENTES</p>
                     <ul>
-                        <li><a href="#" id="task-add">+</a></li>
+                        <li><a id="task-add">+</a></li>
                         <li>
-                            <a href="#" class="arrow-bars" id="pending-list-expand">
+                            <a class="arrow-bars list-expand">
                                 <div class="expand-bars bar1"></div>
                                 <div class="expand-bars bar2"></div>
                             </a>
@@ -49,10 +45,16 @@
             <div class="done-list-area">
                 <div class="list-title">
                     <p>CONCLUÍDAS</p>
+                    <ul>
+                        <li>
+                            <a class="arrow-bars list-expand">
+                                <div class="expand-bars bar1"></div>
+                                <div class="expand-bars bar2"></div>
+                            </a>
+                        </li>
+                    </ul>
                 </div>
                 <div id="done-list">
-                    <div class="done-task">
-                    </div>
                 </div>
             </div>
         </div>

@@ -4,6 +4,7 @@ let botaoLogin = document.querySelector("#l-button");
 let erroLogin = document.querySelector(".form-message");
 
 const URL = "https://ctd-fe2-todo-v2.herokuapp.com/v1";
+
 export function bloqueiaBotao(botao){
     botao.disabled= "true";
     botao.style.backgroundColor = "var(--primary)";
@@ -43,10 +44,14 @@ export function login(usuario){
         let taskDescription = JSON.parse(element.description);
         let taskDescriptionContent = taskDescription.content
 
-        if (taskDescription.type == "pendingList"){
-          sessionStorage.setItem("pendingList", JSON.parse(taskDescriptionContent))
+        if (taskDescription.type == "pendingList") {
+          sessionStorage.setItem("pendingList", JSON.parse(`[${taskDescriptionContent}]`))
           sessionStorage.setItem("pendingListId", element.id)
+        } else if (taskDescription.type == "doneList") {
+          sessionStorage.setItem("doneList", JSON.parse(`[${taskDescriptionContent}]`))
+          sessionStorage.setItem("doneListId", element.id)
         }
+
       })
 
     window.location.href='tasks.html';

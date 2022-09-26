@@ -18,7 +18,9 @@ function userValidation() {
             sessionStorage.setItem("user", JSON.stringify(result))
         }
     })
-    .catch (erro => console.log(erro))
+    .catch (erro => {
+        console.log(erro);
+    })
 }
 
 // ARRAY PARA ITERAÇÃO
@@ -56,13 +58,12 @@ function labelMoveBlur (event) {
 }
 
 function openProfile () {
-    let arrow = document.querySelector(".arrow-bars");
     let pWindow = document.getElementById("profile-window")
+
 
     if (pWindow == null) { 
         togleProfileWindow();
         pWindow = document.getElementById("profile-window")
-        arrow.style.transform = "rotate(180deg)"
         pWindow.style.visibility = "visible";
         pWindow.style.transition = "100ms"
         pWindow.style.height = "300px"
@@ -71,7 +72,6 @@ function openProfile () {
         let body = document.querySelector("body")
         pWindow = document.getElementById("profile-window")
 
-        arrow.style.transform = ""
         pWindow.style.visibility = "hidden";
         pWindow.style.transition = "0ms"
         pWindow.style.height = "0"
@@ -81,19 +81,27 @@ function openProfile () {
 }
 
 function togleProfileWindow () {
+    let userData = JSON.parse(sessionStorage.getItem("user"))
     let body = document.querySelector("body");
     let pWindow = document.createElement("div");    
     pWindow.innerHTML = `
-        <img src="./assets/profile-pic.jpg" alt="imagem de perfil" id="profile-pic">
-        <p id="profile-name">Neymar Jr.</p>
-        <p id="profile-email">MENINONEY@PSG.FR</p>
-        <a href="#" id="profile-password-change">ALTERAR SENHA</a>
-        <a href="./index.html" id="profile-logout">
+        <img src="https://img.freepik.com/premium-vector/cute-alien-cartoon-relaxing-moon_403370-95.jpg" alt="imagem de perfil" id="profile-pic">
+        <p id="profile-name">${userData.firstName} ${userData.lastName}</p>
+        <p id="profile-email">${userData.email}</p>
+        <a id="profile-logout" onclick="terminateSession()">
             <p>ENCERRAR SESSÃO</p>
             <img src="./assets/logout.svg" alt="Encerrar Sessão">
         </a>
     `;
 
+    // Possível implementação!
+    // <a href="#" id="profile-password-change">ALTERAR SENHA</a>
+
     pWindow.id = "profile-window";
     body.appendChild(pWindow);
+}
+
+function terminateSession () {
+    sessionStorage.clear()
+    window.location = "./login.html"
 }
