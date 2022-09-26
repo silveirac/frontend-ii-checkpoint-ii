@@ -9,7 +9,10 @@
     --secondary-dark: #673dc7;
     --light-grey: #606060;
     --red: #e23333;
+    --red-dark: #a52424;
     --green: #569320;
+    --green-dark: #3c6518;
+    --yellow: #ecdb24;
 
 }
 
@@ -19,6 +22,22 @@
     box-sizing: border-box;
     font-family: 'Orbitron';
     text-decoration: none;
+}
+
+.hidden {
+    visibility: hidden !important;
+}
+
+.no-turn {
+    transform: rotate(0deg) !important;
+}
+
+.half-turn {
+    transform: rotate(180deg) !important;
+}
+
+.full-turn {
+    transform: rotate(360deg) !important;
 }
 
 body {
