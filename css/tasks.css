@@ -344,7 +344,8 @@ main {
     background-color: var(--secondary);
 }
 
-#add-task-container {
+#add-task-container,
+#edit-task-container {
     position:absolute;
     display: flex;
     flex-direction: column;
@@ -358,7 +359,8 @@ main {
     background-color: rgba(0, 0, 0, 0.50);
 }
 
-#add-task-form {
+#add-task-form,
+#edit-task-form {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -374,7 +376,8 @@ main {
     padding-bottom: 0;
 }
 
-#add-task-close {
+#add-task-close,
+#edit-task-close {
     position: absolute;
     top: -50px;
     right: -50px;
@@ -388,11 +391,13 @@ main {
     border-radius: 50%;
 }
 
-#add-task-close:hover {
+#add-task-close:hover,
+#edit-task-close:hover {
     background-color: rgba(0, 0, 0, 0.5);
 }
 
-#add-task-close:active {
+#add-task-close:active
+#edit-task-close:active {
     background-color: rgba(255, 255, 255, 0.05);
 }
 
@@ -407,7 +412,6 @@ main {
     background-color: var(--primary-light) !important;
     color: white;
     resize: none;
-    margin-bottom: 40px;
     letter-spacing: 0.1rem;
     line-height: 20px;
     vertical-align: text-bottom;
@@ -424,12 +428,19 @@ main {
     opacity: 0.35;
 }
 
+#input-task-error {
+    margin-top: -30px;
+    font-size: 0.6rem;
+    letter-spacing: 0.1rem;
+}
+
 #radio-input-container-label {
     font-size: 0.5rem;
     letter-spacing: 0.15rem;
     border-bottom: 1px solid var(--secondary);
     padding: 5px 77% 5px 0;
     text-align: left;
+    margin-top: 40px;
 }
 
 .radio-input-container {
@@ -487,6 +498,13 @@ main {
     background-color: var(--secondary);
     border: none;
     cursor: pointer;;
+}
+
+.save-task:disabled {
+    background-color: var(--primary-light);
+    pointer-events: none;
+    cursor:no-drop;
+    border-top: 1px solid var(--light-grey);
 }
 
 .save-task:active {

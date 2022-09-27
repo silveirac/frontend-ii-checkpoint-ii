@@ -44,10 +44,11 @@ sobrenome.addEventListener("keyup",function(){
     }
 });
 //regex para testar se email possui formato valido, EX: xxx@xxx.com
-let testaEmail = /\S\+@S+\.\S+/;
+let testaEmail = /\S+@\S+\.\S+/;
 
 email.addEventListener("keyup",function(){
-    let testeEmail = testaEmail.test(email.value);
+    let emalNormalizado = email.value.trim();
+    let testeEmail = testaEmail.test(emalNormalizado);
     let erroEmail = document.querySelector("#erroEmail");
     bloqueiaBotao(botaoCadastro);
     if(!testeEmail){
@@ -71,11 +72,13 @@ senha1.addEventListener("keyup",function(){
         erroSenha.innerHTML="Senha precisa conter uma letra minuscula";
     }else if(!senha1.value.match(/^(?=.*[A-Z])/)){
         erroSenha.innerHTML="Senha precisa conter uma letra maiuscula";
-    }else if(!senha1.value.match(/^([a-zA-Z0-9]{8,})/)){
-        erroSenha.innerHTML="Senha precisa conter no minimo 8 caracteres";
-    }else{
+    }else if(senha1.value.length<8){
+        erroSenha.innerHTML="Senha precisa ter no mínimo 8 caracteres";
+    }else if(senha1.value.match(/^([a-zA-Z0-9!@#$%¨&*-_]{8,})/)){
         senha1validada=campoValidado(erroSenha,senha1);
         testaInputs();
+    }else{
+        erroSenha.innerHTML="Caractere inválido";
     }
 });
 

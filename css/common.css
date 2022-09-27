@@ -121,3 +121,10 @@ header {
 a {
     cursor: pointer !important;
 }
+
+small {
+    padding: 5px 0 0 10px;
+    color: #e47b7b;
+    letter-spacing: 0.15rem;
+    height: 16px;
+}

@@ -9,6 +9,7 @@ export function bloqueiaBotao(botao){
     botao.disabled= "true";
     botao.style.backgroundColor = "var(--primary)";
 };
+
 //função para realizar login do user
 export function login(usuario){
     fetch(`${URL}/users/login`,{
@@ -81,12 +82,78 @@ export function cadastra (usuario) {
     return resposta.json();
   }).then(function(resposta){
     sessionStorage.setItem("jwt",resposta.jwt);
-    window.location.href='tasks.html';
-  }).catch(erro =>{
-    console.log(erro);
-  })
 
-  }
+    let fetchBody = JSON.stringify({
+      description : {
+          content : JSON.stringify("[]"),
+          priority : 0,
+          type : "pendingList"
+      },
+      completed : false
+    });
+
+    fetch (`${URL}/tasks`, {
+        method: 'POST',
+        headers: {
+            "authorization" : resposta.jwt,
+            "content-type" : "application/json"
+        },
+        body: fetchBody
+    })
+    .then (response => {
+
+      let fetchBody2 = JSON.stringify({
+        description : {
+            content : JSON.stringify("[]"),
+            priority : 0,
+            type : "doneList"
+        },
+        completed : false
+    });
+    
+      fetch (`${URL}/tasks`, {
+          method: 'POST',
+          headers: {
+              "authorization" : resposta.jwt,
+              "content-type" : "application/json"
+          },
+          body: fetchBody2
+      }).then(response2 => {
+
+        let fetchBody = {
+          method: "GET",
+          headers: {
+              authorization: sessionStorage.getItem("jwt")
+          }
+        }
+      
+        fetch (`${URL}/tasks`, fetchBody)
+        .then (response3 => response3.json())
+        .then (result => {
+          let allTask = Array.from(result);
+    
+          allTask.forEach(element => {
+    
+            let taskDescription = JSON.parse(element.description);
+            let taskDescriptionContent = taskDescription.content
+    
+            if (taskDescription.type == "pendingList") {
+              sessionStorage.setItem("pendingList", JSON.parse(`[${taskDescriptionContent}]`))
+              sessionStorage.setItem("pendingListId", element.id)
+            } else if (taskDescription.type == "doneList") {
+              sessionStorage.setItem("doneList", JSON.parse(`[${taskDescriptionContent}]`))
+              sessionStorage.setItem("doneListId", element.id)
+            }
+    
+          })
+        })
+        .then (output => window.location.href='tasks.html')
+      })
+    }).catch(erro =>{
+      console.log(erro);
+    })
+  })
+}
 
 export function campoValidado(small,campo) {
     small.innerHTML = "";
