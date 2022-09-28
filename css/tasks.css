@@ -1,5 +1,4 @@
 @import url('./common.css');
-@import url('./animations.css');
 
 body {
     position: relative;
@@ -179,6 +178,7 @@ main {
     position: relative;
     display: flex;
     align-items: center;
+    width: 100%;
     column-gap: 20px;
     color: white;
     border-bottom: 1px solid var(--primary-dark);
@@ -285,6 +285,7 @@ main {
     position: relative;
     display: flex;
     align-items: center;
+    width: 100%;
     column-gap: 20px;
     color: var(--light-grey);
     text-decoration: line-through;
