@@ -178,7 +178,7 @@ function taskInitiation () {
         function validaTarefa(){
             let inputTarefa = document.getElementById("task-description-input");
             inputTarefa.addEventListener("keyup",function(){
-                if(inputTarefa.value.length>6){
+                if(inputTarefa.value.length>5){
                     document.getElementById("input-task-error").innerText = ""
                     document.querySelector("#save-task").removeAttribute("disabled");
                 }else{
@@ -796,7 +796,7 @@ function taskInitiation () {
         function validaTarefaEdit(){
             let inputTarefa = document.getElementById("task-description-input");
             inputTarefa.addEventListener("keyup",function(){
-                if(inputTarefa.value.length>6){
+                if(inputTarefa.value.length>5){
                     document.getElementById("input-task-error").innerText = ""
                     document.querySelector("#edit-task").removeAttribute("disabled");
                 }else{
