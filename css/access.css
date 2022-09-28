@@ -3,16 +3,19 @@
 body {
     background-image: linear-gradient(rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.75)), url("../assets/login-background.webp");
     background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+
 }
 
 main {
-
-    height: 100vh;
+    padding-top: 50px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     row-gap: 30px;
+    min-height: calc(100vh - 20px);
 }
 
 .logo-img {
@@ -90,4 +93,14 @@ main {
     height: 55px;
     font-size: 1rem;
     letter-spacing: 0.15rem;
+}
+
+footer {
+    height: 20px;
+    line-height: 20px;
+    background-color: var(--primary);
+    display: flex;
+    justify-content: center;
+    font-size: 0.65rem;
+    color: var(--light-grey);
 }

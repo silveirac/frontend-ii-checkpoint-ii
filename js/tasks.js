@@ -303,7 +303,8 @@ function taskInitiation () {
             let pendingTask = document.createElement("div");
             pendingTask.setAttribute("id",`${id}`);
             pendingTask.setAttribute("completed", `${completed}`);
-            pendingTask.classList.add("pending-task")
+            pendingTask.setAttribute("priority", `${priority}`);
+            pendingTask.classList.add("pending-task");
             
             pendingTask.innerHTML = `
                 <div class="task-move">
@@ -699,29 +700,55 @@ function taskInitiation () {
         })
     }
 
-    function openEdit() {
+    function openEdit(button) {
         let editForm = document.createElement("div");
         editForm.id = "edit-task-container";
         
+        let taskDescription = button.parentElement.previousElementSibling.innerText;
+        let taskPriority = button.parentElement.parentElement.getAttribute("priority");
+
+        let p1, p2, p3;
+        switch (parseInt(taskPriority)) {
+            case 1:
+                p1 = 'checked="true"';
+                p2 = "";
+                p3 = "";
+                break;
+
+            case 2:
+                p1 = "";
+                p2 = 'checked="true"';
+                p3 = "";
+                break;
+
+            case 3:
+                p1 = "";
+                p2 = "";
+                p3 = 'checked="true"';
+                break;
+            default:
+        }
+
+
         editForm.innerHTML = `
             <form id="edit-task-form" class="form">
-            <a href="javascript:void(0)" id="edit-task-close">X</a>
-            <h2>.EDITAR TAREFA_</h2>
-            <textarea name="task-description" id="task-description-input" class="form-input" placeholder="O que precisa fazer?" maxlength="100" rows="4"></textarea>
-            <label for="radio-input-container" id="radio-input-container-label">PRIORIDADE</label>
-            <div class="radio-input-container" id="radio-input-container">
-                <span>MIN</span>
-                <span class="radio-group">
-                    <input type="radio" name="priority" id="radio-input-min" class="radio-input" value="1" checked="true">
-                    <label for="radio-input-min" class="radio-input-label"></label>
-                    <input type="radio" name="priority" id="radio-input-med" class="radio-input" value="2">
-                    <label for="radio-input-med" class="radio-input-label"></label>
-                    <input type="radio" name="priority" id="radio-input-max" class="radio-input" value="3">
-                    <label for="radio-input-max" class="radio-input-label"></label>
-                </span>
-                <span>MAX</span>
-            </div>
-            <button type="button" id="save-task" class="save-task">SALVAR</button>
+                <a href="javascript:void(0)" id="edit-task-close">X</a>
+                <h2>.EDITAR TAREFA_</h2>
+                <textarea name="task-description" id="task-description-input" class="form-input" placeholder="O que precisa fazer?" maxlength="100" rows="4">${taskDescription}</textarea>
+                <label for="radio-input-container" id="radio-input-container-label">PRIORIDADE</label>
+                <div class="radio-input-container" id="radio-input-container">
+                    <span>MIN</span>
+                    <span class="radio-group">
+                        <input type="radio" name="priority" id="radio-input-min" class="radio-input" value="1" ${p1}>
+                        <label for="radio-input-min" class="radio-input-label"></label>
+                        <input type="radio" name="priority" id="radio-input-med" class="radio-input" value="2" ${p2}>
+                        <label for="radio-input-med" class="radio-input-label"></label>
+                        <input type="radio" name="priority" id="radio-input-max" class="radio-input" value="3" ${p3}>
+                        <label for="radio-input-max" class="radio-input-label"></label>
+                    </span>
+                    <span>MAX</span>
+                </div>
+                <button type="button" id="edit-task" class="edit-task">SALVAR</button>
             </form>
         `;
 
@@ -757,11 +784,43 @@ function taskInitiation () {
         document.getElementById("task-description-input").addEventListener("keydown", expandOnKeydown);
         document.getElementById("task-description-input").addEventListener("blur", expandOnBlur);
 
-        // listener - adiciona tarefa
-        document.getElementById("save-task").addEventListener("click", function (event) {
+        // listener - edita tarefa
+        document.getElementById("edit-task").addEventListener("click", function (event) {
             event.preventDefault();
-            taskAdd();
+            taskEdit(button)
         });
+    }
+
+    function taskEdit (button) {
+        let id = button.parentElement.parentElement.id;
+        // capturando a descrição
+        let descriptionInput = document.getElementById("task-description-input").value
+
+        // capturando a prioridade
+        let rButtons = Array.from(document.getElementsByClassName("radio-input"));
+        let priority = rButtons.filter(element => element.checked == true);
+        
+        let fetchBody = JSON.stringify({
+            description : {
+                content : descriptionInput,
+                priority : priority[0].value,
+                type : "task"
+            },
+            completed : false
+        });
+
+        fetch (`${baseUrl}/tasks/${id}`, {
+            method: 'PUT',
+            headers: {
+                "authorization" : sessionStorage.getItem("jwt"),
+                "content-type" : "application/json"
+            },
+            body: fetchBody
+        })
+        .then(resolve => {
+            document.getElementById("edit-task-container").remove()
+            getTasks ();
+        })
     }
 
     getTasks ();
