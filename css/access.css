@@ -15,7 +15,7 @@ main {
     justify-content: center;
     align-items: center;
     row-gap: 30px;
-    min-height: calc(100vh - 20px);
+    min-height: calc(100vh - 60px);
 }
 
 .logo-img {
@@ -96,11 +96,11 @@ main {
 }
 
 footer {
-    height: 20px;
+    height: 60px;
     line-height: 20px;
-    background-color: var(--primary);
     display: flex;
     justify-content: center;
+    align-items: center;
     font-size: 0.65rem;
     color: var(--light-grey);
 }

@@ -4,6 +4,7 @@ let senhaLogin = document.querySelector("#password-input");
 let botaoLogin = document.querySelector("#l-button");
 
 import {bloqueiaBotao,campoValidado,login} from "./utilities.js" ;
+
 bloqueiaBotao(botaoLogin);
 let emailLoginValidado=false,senhaLoginvalidada=false;
 

@@ -3,8 +3,8 @@ const baseUrl = "https://ctd-fe2-todo-v2.herokuapp.com/v1"
 // validação de JWT
 window.addEventListener("load",jwtValidation);
 function jwtValidation(){
+    spinnerLoad ()
     let jwt = sessionStorage.getItem("jwt");
-
     fetch (`${baseUrl}/users/getMe`, {
         method: 'GET',
         headers: {
@@ -14,16 +14,17 @@ function jwtValidation(){
     })
     .then (response => {
         if (response.status == 200 || response.status == 201) {
+            setTimeout (function () {
+                spinnerLoad ()
+            }, 1000)
             return response.json()
-
         } else {
             throw response;   
         }
-        
     })
-    .then (
-        taskInitiation ()
-    )
+    .then (result => {
+        taskInitiation ();
+    })    
     .catch (error => window.location.href='login.html');
 };
 
@@ -753,6 +754,7 @@ function taskInitiation () {
         `;
 
         document.body.appendChild(editForm);
+        validaTarefaEdit()
 
         // fecha o formulário de criação de tarefas
         document.getElementById("edit-task-close").addEventListener("click", function (event) {
@@ -789,8 +791,25 @@ function taskInitiation () {
             event.preventDefault();
             taskEdit(button)
         });
+
+        // valida campos da tarefa
+
+        function validaTarefaEdit(){
+            let inputTarefa = document.getElementById("task-description-input");
+            inputTarefa.addEventListener("keyup",function(){
+                if(inputTarefa.value.length>5){
+                    document.getElementById("input-task-error").innerText = ""
+                    document.querySelector("#edit-task").removeAttribute("disabled");
+                }else{
+                    document.getElementById("input-task-error").innerText = "Mínimo de 5 caracteres."
+                    inputTarefa.style.borderBottom.focus= "1px solid var(--red) !important";
+                    document.querySelector("#edit-task").setAttribute("disabled", true);
+                }
+            });
+            };
     }
 
+    // salva alterações na tarefa
     function taskEdit (button) {
         let id = button.parentElement.parentElement.id;
         // capturando a descrição
@@ -822,7 +841,27 @@ function taskInitiation () {
             getTasks ();
         })
     }
-
     getTasks ();
+}
 
+// insere animações de carregamento
+function spinnerLoad () {
+    let getSpinner1 = document.getElementById("spinner1")
+    let getSpinner2 = document.getElementById("spinner2")
+    let doneList = document.getElementById("done-list");
+    let pendingList = document.getElementById("pending-list");
+
+    if(getSpinner1 == null || getSpinner2 == null) {
+        let spinner1 = document.createElement("div");
+        let spinner2 = document.createElement("div");
+        spinner1.classList.add("spinner");
+        spinner2.classList.add("spinner");
+
+        pendingList.appendChild(spinner1)
+        doneList.appendChild(spinner2)
+
+    } else {
+        pendingList.removeChild(getSpinner1)
+        doneList.removeChild(getSpinner2)
+    }
 }

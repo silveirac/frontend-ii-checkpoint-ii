@@ -1,11 +1,10 @@
 @import url('./common.css');
 
 body {
-    height: 100vh;
+    min-height: 100vh;
     background-image: linear-gradient(rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.75)), url("../assets/login-background.webp");
     background-size: cover;
     background-repeat: no-repeat;
-    overflow: hidden;
 }
 
 header {
@@ -26,7 +25,12 @@ header {
 }
 
 .logo-img {
-    height: 35px;
+    height: 30px;
+}
+
+main {
+    height: 100%;
+    min-height: calc(100vh - 60px);
 }
 
 .banner-container {
@@ -58,6 +62,15 @@ header {
     box-shadow: 7.5px 6.5px 1px rgba(120, 120, 120, 0.75);
     background-color: var(--primary);
     color: white;
+}
+
+footer {
+    padding: 20px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 0.65rem;
 }
 
 @media (min-width: 768px) {
@@ -108,14 +121,16 @@ header {
     .banner-img-container {
         display: flex;
         align-items: center;    
-        width: 50%;
+        max-width: 50%;
         height: 800px;
         padding-top: 50px;
     }
     
     .banner-img {
         height: 650px;
-        width: 650px;
+        min-width: 325px;
+        max-height: 650px;
+        max-width: 650px;
         object-fit: cover;
         object-position: 0;
         border-left: none;
@@ -127,7 +142,8 @@ header {
 
     .banner-text-container {
         position: absolute;
-        width: 640px;
+        min-width: 320px;
+        width: calc(100% - 10px);
         padding: 10px 20px;
         border-left: 4px solid var(--secondary);
         background-color: rgba(0, 0, 0, 0.5);
@@ -135,11 +151,15 @@ header {
 
     .text2 {
         font-size: 1.5rem;
+        word-break: break-all;
+        hyphens: auto;
     }
 
     .text1,
     .text3 {
-        font-size: 2.5rem;
+        font-size: 2.15rem;
+        word-break: break-all;
+        hyphens: auto;
     }
 
     .banner-description-container {
@@ -148,12 +168,12 @@ header {
         align-items: center;
         row-gap: 55px;
         z-index: 1;
+        padding: 20px;
     }
 
     .banner-description {
         color: white;
-        height: 400px;
-        min-width: 300px;
+        min-width: 300px;   
         
     }
 
@@ -186,7 +206,7 @@ header {
     }
 }
 
-@media (max-width: 425px) {
+@media (max-width: 767px) {
     header {
         justify-content: space-between;
     }
@@ -232,6 +252,107 @@ header {
     }
 
     .banner-container {
+        position: relative;
         flex-direction: column;
+        row-gap: 30px;
+        padding: 0;
+    }
+
+    .banner-img-container {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .banner-img {
+        visibility: hidden;
+    }
+
+    .banner-text-container {
+        position: absolute;
+        top: 35%;
+        z-index: 1;
+        width: 640px;
+        max-width: 90%;
+        padding: 10px 20px;
+        border-left: 4px solid var(--secondary);
+        background-color: rgba(0, 0, 0, 0.5);
+        letter-spacing: 0.15rem;
+    }   
+
+    .banner-description-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        row-gap: 20px;
+        padding: 20px;
+    }
+
+    .banner-description {
+        display: flex;
+        flex-direction: column;
+        row-gap: 20px;
+        max-width: 90%;
+        padding: 20px 35px 35px 35px;
+        border-radius: 15px;
+        box-shadow: 7.5px 6.5px 1px rgba(120, 120, 120, 0.75);
+        background-color: var(--primary);
+        color: white;
+    }
+
+    .banner-description h1 {
+        border-bottom: 2px solid var(--secondary);
+        padding: 15px 0;
+        font-size: 1.15rem;
+        letter-spacing: 0.15rem;
+    }
+
+    .description-list-container {
+        height: 100%;
+    }
+
+    .description-list-container ul {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        row-gap: 10px;
+        height: 100%;
+        list-style-image: url("../assets/list-arrow.svg");
+        padding: 0 20px;
+    }
+
+    .banner-button {
+        background-color: var(--primary);
+        padding: 20px ;
+        color: white;
+        border: 2px solid var(--secondary-light);
+        border-radius: 10px;
+        box-shadow: 7.5px 7.5px 1px var(--secondary-dark);
+    }
+
+    .banner-text-container {
+        width: 100%;
+    }
+
+    .text1,
+    .text3 {
+        font-size:  1.75rem;
+    }
+
+    footer {
+        font-size: 0.5rem;
+    }
+}
+
+@media (min-width: 428px) and (max-width: 767px) {
+    .banner-text-container {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+    
+    .text1,
+    .text3 {
+        font-size: 2.25rem;
     }
 }

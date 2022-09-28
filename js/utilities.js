@@ -12,6 +12,7 @@ export function bloqueiaBotao(botao){
 
 //função para realizar login do user
 export function login(usuario){
+    spinnerLoad("l-button", "ENTRAR")
     fetch(`${URL}/users/login`,{
     method:"POST",
     headers:{
@@ -54,11 +55,14 @@ export function login(usuario){
         }
 
       })
+    setTimeout(function () {
+      window.location.href='tasks.html';
+    }, 500)
 
-    window.location.href='tasks.html';
     });
     
   }).catch (erro => {
+      spinnerLoad("l-button", "ENTRAR")
       senhaLogin.value = "";
       emailLogin.value = "";
       bloqueiaBotao(botaoLogin);
@@ -71,13 +75,13 @@ export function login(usuario){
 
 //função para cadastrar o user na API
 export function cadastra (usuario) {
-
-    fetch(`${URL}/users`,{
-    method:"POST",
-    headers:{
-        'Content-Type':'application/json'
-    },
-    body:JSON.stringify(usuario)
+  spinnerLoad("r-button", "ENVIAR")
+  fetch(`${URL}/users`,{
+  method:"POST",
+  headers:{
+      'Content-Type':'application/json'
+  },
+  body:JSON.stringify(usuario)
   }).then(function(resposta) {
     return resposta.json();
   }).then(function(resposta){
@@ -160,3 +164,20 @@ export function campoValidado(small,campo) {
     campo.style.borderColor = "var(--green)";
     return true;
 };
+
+function spinnerLoad (buttonName, buttonText) {
+  let getSpinner = document.getElementById("spinner")
+  let lrButton = document.getElementById(buttonName)
+
+  if(getSpinner == null) {
+      let spinner = document.createElement("div");
+      spinner.id = "spinner";
+      spinner.classList.add("spinner");
+      lrButton.innerText = "";
+      lrButton.appendChild(spinner);
+
+  } else {
+    lrButton.innerText = buttonText;
+    lrButton.removeChild(spinner)
+  }
+}

@@ -1,4 +1,5 @@
 @import url('./common.css');
+@import url('./animations.css');
 
 body {
     position: relative;
@@ -81,7 +82,7 @@ header {
     height: 0;
     transition: 100ms;
     visibility: hidden;
-    padding: 15px 20px 0px;
+    padding: 15px 10px 0px;
     color: white;
 }
 
@@ -101,11 +102,11 @@ header {
 #profile-email {
     text-justify: center;
     background-color: var(--secondary);
-    font-size: 0.5rem;
+    font-size: 0.55rem;
     letter-spacing: 0.15rem;
     padding: 5px 10px;
     border-radius: 10px;
-    max-width: 99%;
+    max-width: 95%;
     overflow: hidden;
 }
 
@@ -163,10 +164,14 @@ main {
 }
 
 #pending-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     background-color: rgba(32, 32, 32, 0.65);
     box-shadow: inset -1px 1px 3px rgba(20, 20, 20, 0.25);
     border-radius: 0 0 15px 15px;
-    padding: 10px 20px 40px;
+    padding: 20px;
     height: 100%;
 }
 
@@ -265,10 +270,14 @@ main {
 }
 
 #done-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     background-color: rgba(32, 32, 32, 0.65);
     box-shadow: inset -1px 1px 3px rgba(20, 20, 20, 0.25);
     border-radius: 0 0 15px 15px;
-    padding: 50px 20px;
+    padding: 20px;
     height: 100%;
 }
 
@@ -370,7 +379,7 @@ main {
     justify-content: space-between;
     align-items: start;
     row-gap: 35px;
-    width: 100%;
+    width: 85%;
     min-height: 200px;
     max-height: 500px;
     max-width: 420px;
@@ -640,7 +649,7 @@ footer {
     }
 }
 
-@media (max-width: 425px) {
+@media (max-width: 767px) {
     .header-menu {
         position: absolute;
         right: 0;
@@ -694,5 +703,37 @@ footer {
         padding: 10px 15px 20px;
     }
 
-    
+    #add-task-close,
+    #edit-task-close {
+        right: -20px;
+    }
+
+    .spinner {
+        height: 20px !important;
+        width: 20px !important;   
+        border: 3px solid rgba(255, 255, 255, 0.15);
+    }
+}
+
+/*Animations*/
+
+.spinner {
+    position: absolute;
+    margin: auto;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    border: 4px solid rgba(255, 255, 255, 0.15);
+    border-top-color: var(--secondary-dark) !important;
+    animation: spin 1s ease-in-out infinite;
+    -webkit-animation: spin 1s ease-in-out infinite;
+
+}
+
+@keyframes spin {
+    to { -webkit-transform: rotate(360deg); }
+}
+
+@-webkit-keyframes spin {
+    to { -webkit-transform: rotate(360deg); }
 }

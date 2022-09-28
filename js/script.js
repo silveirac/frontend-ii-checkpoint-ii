@@ -85,7 +85,7 @@ function togleProfileWindow () {
     let body = document.querySelector("body");
     let pWindow = document.createElement("div");    
     pWindow.innerHTML = `
-        <img src="https://img.freepik.com/premium-vector/cute-alien-cartoon-relaxing-moon_403370-95.jpg" alt="imagem de perfil" id="profile-pic">
+        <img src="./assets/profile-pic.jpeg" alt="imagem de perfil" id="profile-pic">
         <p id="profile-name">${userData.firstName} ${userData.lastName}</p>
         <p id="profile-email">${userData.email}</p>
         <a id="profile-logout" onclick="terminateSession()">
