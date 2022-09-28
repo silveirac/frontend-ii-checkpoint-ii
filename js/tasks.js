@@ -15,7 +15,7 @@ function jwtValidation(){
     .then (response => {
         if (response.status == 200 || response.status == 201) {
             setTimeout (function () {
-                spinnerLoad ()
+                removeSpinner ()
             }, 1000)
             return response.json()
         } else {
@@ -178,7 +178,7 @@ function taskInitiation () {
         function validaTarefa(){
             let inputTarefa = document.getElementById("task-description-input");
             inputTarefa.addEventListener("keyup",function(){
-                if(inputTarefa.value.length>5){
+                if(inputTarefa.value.length>6){
                     document.getElementById("input-task-error").innerText = ""
                     document.querySelector("#save-task").removeAttribute("disabled");
                 }else{
@@ -793,11 +793,10 @@ function taskInitiation () {
         });
 
         // valida campos da tarefa
-
         function validaTarefaEdit(){
             let inputTarefa = document.getElementById("task-description-input");
             inputTarefa.addEventListener("keyup",function(){
-                if(inputTarefa.value.length>5){
+                if(inputTarefa.value.length>6){
                     document.getElementById("input-task-error").innerText = ""
                     document.querySelector("#edit-task").removeAttribute("disabled");
                 }else{
@@ -854,6 +853,8 @@ function spinnerLoad () {
     if(getSpinner1 == null || getSpinner2 == null) {
         let spinner1 = document.createElement("div");
         let spinner2 = document.createElement("div");
+        spinner1.id = "spinner1"
+        spinner2.id = "spinner2"
         spinner1.classList.add("spinner");
         spinner2.classList.add("spinner");
 
@@ -864,4 +865,18 @@ function spinnerLoad () {
         pendingList.removeChild(getSpinner1)
         doneList.removeChild(getSpinner2)
     }
+
 }
+
+function removeSpinner () {
+    let getSpinner1 = document.getElementById("spinner1")
+    let getSpinner2 = document.getElementById("spinner2")
+    if(getSpinner1 != null || getSpinner2 != null) {
+        getSpinner1.remove();
+        getSpinner2.remove();
+    } else {
+
+    }
+
+}
+
